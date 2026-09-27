@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#f7f9fb"/>
+    <stop offset="100%" stop-color="#ece9ff"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="75%" cy="30%" r="60%">
+    <stop offset="0%" stop-color="#5c4bbd" stop-opacity=".18"/>
+    <stop offset="100%" stop-color="#5c4bbd" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect width="1600" height="900" fill="url(#glow)"/>
+<circle cx="1450" cy="70" r="180" fill="#5c4bbd" opacity=".05"/>
+<circle cx="140" cy="820" r="240" fill="#5c4bbd" opacity=".04"/>
+<text x="110" y="185" fill="#18232e" font-family="Arial, sans-serif" font-size="62" font-weight="800">PDF Processor</text>
+<text x="110" y="245" fill="#65727d" font-family="Arial, sans-serif" font-size="27">AI Document Processing</text>
+<rect x="110" y="285" width="120" height="7" rx="3.5" fill="#5c4bbd"/>
+<rect x="110" y="315" width="330" height="12" rx="6" fill="#65727d" opacity=".25"/>
+<rect x="110" y="342" width="270" height="12" rx="6" fill="#65727d" opacity=".18"/>
+
+        <rect x="650" y="130" width="360" height="540" rx="18" fill="#fff" stroke="#5c4bbd" stroke-width="3" transform="rotate(-7 830 400)"/>
+        <rect x="710" y="210" width="220" height="14" rx="7" fill="#5c4bbd" opacity=".75" transform="rotate(-7 830 400)"/>
+        <rect x="710" y="250" width="180" height="9" rx="4" fill="#a7b2bd" transform="rotate(-7 830 400)"/>
+        <rect x="710" y="285" width="220" height="9" rx="4" fill="#a7b2bd" transform="rotate(-7 830 400)"/>
+        <rect x="710" y="340" width="210" height="180" rx="10" fill="#ece9ff" transform="rotate(-7 830 400)"/>
+        <rect x="880" y="180" width="360" height="540" rx="18" fill="#fff" stroke="#5c4bbd" stroke-width="3"/>
+        <rect x="930" y="235" width="230" height="16" rx="8" fill="#5c4bbd"/>
+        <rect x="930" y="275" width="185" height="9" rx="4" fill="#a7b2bd"/>
+        <rect x="930" y="315" width="220" height="9" rx="4" fill="#a7b2bd"/>
+        <rect x="930" y="365" width="250" height="140" rx="12" fill="#ece9ff"/>
+        <rect x="930" y="535" width="150" height="38" rx="10" fill="#5c4bbd"/>
+        <rect x="1095" y="535" width="85" height="38" rx="10" fill="#eef1f4"/>
+        <circle cx="1290" cy="270" r="92" fill="#ece9ff"/>
+        <path d="M1250 300 L1278 245 L1302 278 L1335 220" fill="none" stroke="#5c4bbd" stroke-width="7" stroke-linecap="round"/>
+        
+<text x="110" y="760" fill="#5c4bbd" font-family="monospace" font-size="18" font-weight="700">PROJECT PREVIEW</text>
+<text x="110" y="795" fill="#65727d" font-family="Arial, sans-serif" font-size="18">Kasra Gharipour — Portfolio</text>
+</svg>

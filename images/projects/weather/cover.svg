@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#f7f9fb"/>
+    <stop offset="100%" stop-color="#e6f5fa"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="75%" cy="30%" r="60%">
+    <stop offset="0%" stop-color="#147a9a" stop-opacity=".18"/>
+    <stop offset="100%" stop-color="#147a9a" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect width="1600" height="900" fill="url(#glow)"/>
+<circle cx="1450" cy="70" r="180" fill="#147a9a" opacity=".05"/>
+<circle cx="140" cy="820" r="240" fill="#147a9a" opacity=".04"/>
+<text x="110" y="185" fill="#18232e" font-family="Arial, sans-serif" font-size="62" font-weight="800">Weather Web App</text>
+<text x="110" y="245" fill="#65727d" font-family="Arial, sans-serif" font-size="27">Weather Dashboard</text>
+<rect x="110" y="285" width="120" height="7" rx="3.5" fill="#147a9a"/>
+<rect x="110" y="315" width="330" height="12" rx="6" fill="#65727d" opacity=".25"/>
+<rect x="110" y="342" width="270" height="12" rx="6" fill="#65727d" opacity=".18"/>
+
+        <rect x="625" y="135" width="820" height="570" rx="30" fill="#ffffff" stroke="#147a9a" stroke-opacity=".25" stroke-width="2"/>
+        <rect x="625" y="135" width="820" height="90" rx="30" fill="#e6f5fa"/>
+        <circle cx="720" cy="180" r="34" fill="#f7c948"/>
+        <path d="M700 195 C710 165 748 165 758 193 C780 188 800 202 800 220 L690 220 C690 205 693 198 700 195" fill="#ffffff"/>
+        <rect x="840" y="165" width="220" height="16" rx="8" fill="#147a9a" opacity=".8"/>
+        <rect x="840" y="193" width="145" height="9" rx="4" fill="#9aa8b4"/>
+        <rect x="660" y="260" width="360" height="190" rx="22" fill="#e6f5fa"/>
+        <text x="700" y="320" fill="#0b5c75" font-size="54" font-family="sans-serif" font-weight="700">26°</text>
+        <rect x="700" y="350" width="150" height="10" rx="5" fill="#147a9a" opacity=".65"/>
+        <rect x="700" y="380" width="210" height="8" rx="4" fill="#a7b2bd"/>
+        <rect x="1050" y="260" width="350" height="190" rx="22" fill="#f5f7f9"/>
+        <path d="M1085 390 C1130 360 1160 375 1195 330 S1260 350 1300 300 S1360 330 1380 285" fill="none" stroke="#147a9a" stroke-width="6"/>
+        <rect x="660" y="475" width="740" height="185" rx="22" fill="#f5f7f9"/>
+        <g fill="#147a9a" opacity=".75"><rect x="700" y="545" width="60" height="65" rx="10"/><rect x="800" y="520" width="60" height="90" rx="10"/><rect x="900" y="565" width="60" height="45" rx="10"/><rect x="1000" y="505" width="60" height="105" rx="10"/><rect x="1100" y="535" width="60" height="75" rx="10"/></g>
+        
+<text x="110" y="760" fill="#147a9a" font-family="monospace" font-size="18" font-weight="700">PROJECT PREVIEW</text>
+<text x="110" y="795" fill="#65727d" font-family="Arial, sans-serif" font-size="18">Kasra Gharipour — Portfolio</text>
+</svg>

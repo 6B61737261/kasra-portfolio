@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#0d141b"/>
+    <stop offset="100%" stop-color="#e8ebff"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="75%" cy="30%" r="60%">
+    <stop offset="0%" stop-color="#243b80" stop-opacity=".18"/>
+    <stop offset="100%" stop-color="#243b80" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<rect width="1600" height="900" fill="url(#glow)"/>
+<circle cx="1450" cy="70" r="180" fill="#243b80" opacity=".05"/>
+<circle cx="140" cy="820" r="240" fill="#243b80" opacity=".04"/>
+<text x="110" y="185" fill="#f5f8fb" font-family="Arial, sans-serif" font-size="62" font-weight="800">DDPGFINAL</text>
+<text x="110" y="245" fill="#b9c7d3" font-family="Arial, sans-serif" font-size="27">Power Systems + Reinforcement Learning</text>
+<rect x="110" y="285" width="120" height="7" rx="3.5" fill="#243b80"/>
+<rect x="110" y="315" width="330" height="12" rx="6" fill="#b9c7d3" opacity=".25"/>
+<rect x="110" y="342" width="270" height="12" rx="6" fill="#b9c7d3" opacity=".18"/>
+
+        <rect x="600" y="120" width="850" height="600" rx="28" fill="#111a25" stroke="#243b80" stroke-opacity=".5" stroke-width="2"/>
+        <rect x="600" y="120" width="850" height="62" rx="28" fill="#172333"/>
+        <rect x="635" y="145" width="160" height="12" rx="6" fill="#243b80"/>
+        <circle cx="1375" cy="151" r="8" fill="#48d597"/>
+        <rect x="635" y="215" width="245" height="145" rx="18" fill="#182534"/>
+        <path d="M660 320 C700 280 720 300 750 260 S810 240 850 280" fill="none" stroke="#243b80" stroke-width="5"/>
+        <rect x="905" y="215" width="245" height="145" rx="18" fill="#182534"/>
+        <circle cx="1025" cy="285" r="62" fill="none" stroke="#243b80" stroke-width="4" opacity=".8"/>
+        <circle cx="1025" cy="285" r="8" fill="#243b80"/>
+        <g stroke="#243b80" stroke-width="2" opacity=".7"><line x1="1025" y1="285" x2="965" y2="245"/><line x1="1025" y1="285" x2="1085" y2="245"/><line x1="1025" y1="285" x2="1090" y2="330"/><line x1="1025" y1="285" x2="960" y2="330"/></g>
+        <rect x="1175" y="215" width="245" height="145" rx="18" fill="#182534"/>
+        <rect x="1210" y="300" width="28" height="35" rx="5" fill="#243b80" opacity=".55"/>
+        <rect x="1255" y="270" width="28" height="65" rx="5" fill="#243b80" opacity=".75"/>
+        <rect x="1300" y="240" width="28" height="95" rx="5" fill="#243b80"/>
+        <rect x="635" y="390" width="785" height="275" rx="18" fill="#182534"/>
+        <g stroke="#2c3c4c" stroke-width="1"><line x1="665" y1="440" x2="1390" y2="440"/><line x1="665" y1="500" x2="1390" y2="500"/><line x1="665" y1="560" x2="1390" y2="560"/><line x1="665" y1="620" x2="1390" y2="620"/></g>
+        <path d="M665 590 L750 550 L825 570 L900 490 L980 525 L1060 460 L1140 500 L1220 430 L1300 455 L1390 405" fill="none" stroke="#243b80" stroke-width="6" stroke-linecap="round"/>
+        
+<text x="110" y="760" fill="#243b80" font-family="monospace" font-size="18" font-weight="700">PROJECT PREVIEW</text>
+<text x="110" y="795" fill="#b9c7d3" font-family="Arial, sans-serif" font-size="18">Kasra Gharipour — Portfolio</text>
+</svg>
