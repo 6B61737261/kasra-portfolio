@@ -485,15 +485,20 @@ ul{margin:0; padding:0; list-style:none}
 .aside-list dd{margin:0; color:var(--text); font-weight:500; text-align:end}
 .aside-list dd.mono{direction:ltr; font-size:12.5px}
 
-.prevnext{display:grid; grid-template-columns:1fr 1fr; gap:14px; padding-top:clamp(34px,4vw,48px); border-top:1px solid var(--line)}
+.prevnext{display:grid; grid-template-columns:1fr 1fr; gap:16px; padding-top:clamp(34px,4vw,48px); border-top:1px solid var(--line)}
 @media (max-width:640px){ .prevnext{grid-template-columns:1fr} }
 .pn{
   border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; background:var(--surface);
-  display:flex; flex-direction:column; gap:6px; transition:border-color .2s, transform .2s;
+  display:flex; flex-direction:column; gap:6px; transition:border-color .2s, transform .2s, box-shadow .2s;
+  text-decoration:none;
 }
-.pn:hover{border-color:var(--accent-line); transform:translateY(-2px)}
-.pn .dir{font-size:12px; color:var(--text-3); display:flex; align-items:center; gap:7px}
-.pn .nm{font-size:15.5px; font-weight:600}
+.pn:hover{border-color:var(--accent-line); transform:translateY(-2px); box-shadow:var(--shadow-2)}
+.pn .dir{font-size:12px; color:var(--text-3); display:inline-flex; align-items:center; gap:7px; font-weight:500}
+.pn .dir svg{width:16px; height:16px; flex:0 0 16px; color:var(--text-3); transition:transform .2s var(--ease), color .2s var(--ease)}
+.pn:hover .dir svg{color:var(--accent-text); transform:translateX(3px)}
+.pn.next:hover .dir svg{transform:translateX(-3px)}
+.pn .nm{font-size:15.5px; font-weight:700; color:var(--text); line-height:1.4}
+.pn .en{font-size:12px; color:var(--text-3); font-family:var(--mono); direction:ltr}
 .pn.next{text-align:end; align-items:flex-end}
 
 /* ============================================================
@@ -752,7 +757,7 @@ const PROJECTS = [
     repo: 'https://github.com/6B61737261/ghestam', demo: null
   },
   {
-    slug: 'ddpgfinal', num: '02', name: 'DDPGFINAL', nameFa: 'بازار برق هوشمند (DDPG)',
+    slug: 'ddpgfinal', num: '02', name: 'DDPGFINAL', nameFa: 'بازار برق هوشمند',
     accent: 'indigo', mono: 'RL', featured: true,
     categories: ['ai'], categoryLabel: 'هوش مصنوعی / یادگیری ماشین',
     tagline: 'استراتژی بهینه پیشنهاد قیمت نیروگاه‌ها در بازار برق با الگوریتم MADDPG، شبکه گراف عصبی (GCN) و MATPOWER.',
@@ -842,7 +847,7 @@ const PROJECTS = [
     repo: 'https://github.com/6B61737261/Issabel_Installer', demo: null
   },
   {
-    slug: 'filereader', num: '05', name: 'Secure PDF Viewer', nameFa: 'نمایشگر امن اسناد (PDF)',
+    slug: 'filereader', num: '05', name: 'Secure PDF Viewer', nameFa: 'نمایشگر امن اسناد',
     accent: 'indigo', mono: 'DR', featured: true,
     categories: ['web'], categoryLabel: 'وب و فول‌استک',
     tagline: 'پورتال ابری توزیع و استریم محافظت‌شده اسناد با PDF.js، واترمارک متحرک و قفل تک‌دستگاه.',
@@ -1113,8 +1118,8 @@ function media(src, alt, ratio, mono, title, extraClass){
   </div>`;
 }
 
-const arrL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 5l-7 7 7 7"/></svg>';
-const arrR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>';
+const arrL = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 5l-7 7 7 7"/></svg>';
+const arrR = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>';
 const ghIco = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-1.96c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.12 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>';
 const extIco = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-8.5 8.5M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
 
@@ -1485,11 +1490,13 @@ function pageDetail(p){
     <nav class="prevnext" aria-label="پیمایش پروژه‌ها">
       <a class="pn" href="#/projects/${prev.slug}">
         <span class="dir">${arrR} پروژهٔ قبلی</span>
-        <span class="nm">${esc(prev.nameFa)} (${esc(prev.name)})</span>
+        <span class="nm">${esc(prev.nameFa)}</span>
+        <span class="en">${esc(prev.name)}</span>
       </a>
       <a class="pn next" href="#/projects/${next.slug}">
         <span class="dir">پروژهٔ بعدی ${arrL}</span>
-        <span class="nm">${esc(next.nameFa)} (${esc(next.name)})</span>
+        <span class="nm">${esc(next.nameFa)}</span>
+        <span class="en">${esc(next.name)}</span>
       </a>
     </nav>
   </div>
