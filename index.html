@@ -659,6 +659,7 @@ ul{margin:0; padding:0; list-style:none}
         <div class="foot-col">
           <h3>پیوندها</h3>
           <a href="https://github.com/6B61737261" target="_blank" rel="noopener noreferrer">گیت‌هاب</a>
+          <a href="https://t.me/DEV_6B61737261" target="_blank" rel="noopener noreferrer">تلگرام</a>
           <a href="#/contact">تماس</a>
         </div>
       </nav>
@@ -684,6 +685,8 @@ const SITE = {
   nameEn: 'Kasra Gharipour',
   role: 'مهندس کامپیوتر • توسعه‌دهنده نرم‌افزار و متخصص زیرساخت شبکه',
   github: 'https://github.com/6B61737261',
+  telegram: 'https://t.me/DEV_6B61737261',
+  telegramId: '@DEV_6B61737261',
   /* پس از استقرار، این مقدار را با آدرس واقعی سایت جایگزین کنید */
   url: 'https://6b61737261.github.io/',
   imgBase: 'images/projects/'
@@ -1121,6 +1124,7 @@ function media(src, alt, ratio, mono, title, extraClass){
 const arrL = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 5l-7 7 7 7"/></svg>';
 const arrR = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>';
 const ghIco = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-1.96c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.12 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>';
+const tgIco = '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.313 4.672c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.416z"/></svg>';
 const extIco = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-8.5 8.5M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
 
 /* ================================================================
@@ -1507,33 +1511,38 @@ function pageContact(){
   return `
   <section class="section">
     <div class="wrap">
-      ${sectionHead('ارتباط', 'تماس', 'برای همکاری پروژه‌ای، موقعیت شغلی یا پرسش فنی می‌توانید از راه‌های زیر در ارتباط باشید.')}
+      ${sectionHead('ارتباط', 'تماس با من', 'برای همکاری در پروژه‌های نرم‌افزاری، زیرساخت شبکه، مشاوره یا طرح پرسش‌های فنی می‌توانید از راه‌های زیر در ارتباط باشید.')}
       <div class="two-col">
         <div class="links reveal">
-          <a class="link-row" href="${SITE.github}" target="_blank" rel="noopener noreferrer">
-            ${ghIco}
-            <span><span class="lbl">گیت‌هاب</span><br><span class="sub">github.com/6B61737261</span></span>
+          <a class="link-row" href="${SITE.telegram}" target="_blank" rel="noopener noreferrer">
+            <span style="color:#229ED9;display:grid;place-items:center">${tgIco}</span>
+            <span><span class="lbl">تلگرام</span><br><span class="sub">${esc(SITE.telegramId)}</span></span>
             <span class="arrow">${arrL}</span>
           </a>
-          <a class="link-row" href="#/projects">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5h16v13H4z"/><path d="M4 10.5h16"/></svg>
-            <span><span class="lbl">نمونه‌کارها</span><br><span class="sub">/projects</span></span>
+          <a class="link-row" href="${SITE.github}" target="_blank" rel="noopener noreferrer">
+            <span style="display:grid;place-items:center">${ghIco}</span>
+            <span><span class="lbl">گیت‌هاب</span><br><span class="sub">github.com/6B61737261</span></span>
             <span class="arrow">${arrL}</span>
           </a>
         </div>
 
         <div class="prose reveal">
           <p>
-            سریع‌ترین راه ارتباط، پیام از طریق <strong>گیت‌هاب</strong> است؛
-            پروفایل و مخزن‌های عمومی همان‌جا در دسترس هستند.
+            سریع‌ترین و مستقیم‌ترین روش ارتباط، ارسال پیام در <strong>تلگرام</strong> است؛
+            معمولاً در کوتاه‌ترین زمان پاسخگوی پیام‌ها خواهم بود.
           </p>
           <p>
-            اگر پروژهٔ مشخصی در ذهن دارید، بهتر است ابتدا
-            <strong>فهرست پروژه‌ها</strong> را ببینید تا حوزهٔ کار و سبک پیاده‌سازی روشن باشد.
+            اگر موضوع پیام شما مرتبط با پروژه‌های فنی، بررسی سورس‌کدها یا مخازن است،
+            پروفایل <strong>گیت‌هاب</strong> نیز در دسترس قرار دارد.
           </p>
-          <div class="draft" style="margin-top:22px">
-            <span class="ic" aria-hidden="true">NOTE</span>
-            <span>این سایت ایستا است و بک‌اند ندارد؛ به همین دلیل فرم تماس سمت سرور در آن قرار نگرفته است. در صورت نیاز می‌توان یک فرم ایستا یا آدرس ایمیل در همین بخش افزوده شود.</span>
+          <div class="fact" style="margin-top:22px;background:var(--surface)">
+            <span class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </span>
+            <div>
+              <h3>وضعیت همکاری</h3>
+              <p>آمادهٔ همکاری به صورت پروژه‌ای، دورکاری (Remote)، و ارائه مشاوره تخصصی در زمینه زیرساخت شبکه و توسعه نرم‌افزار.</p>
+            </div>
           </div>
         </div>
       </div>
