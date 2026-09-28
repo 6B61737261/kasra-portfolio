@@ -562,6 +562,24 @@ ul{margin:0; padding:0; list-style:none}
 .card:hover .media .cover-glass{opacity:1; transform:none}
 .cover-glass .cover-title{font-size:12px;font-weight:600}
 .cover-glass .cover-type{font-size:10px;opacity:.72;font-family:var(--mono);direction:ltr}
+
+/* Private repository card in detail page */
+.private-repo-card{
+  background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--radius); padding:24px;
+}
+.priv-header{display:flex; align-items:center; gap:11px; color:var(--text); font-size:15.5px}
+.priv-icon{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:36px; height:36px; border-radius:9px;
+  background:var(--surface-2); color:var(--text); border:1px solid var(--line);
+}
+.lock-tag{
+  display:inline-flex; align-items:center; font-size:11.5px; font-weight:600;
+  padding:3px 9px; border-radius:6px; background:var(--surface-2);
+  color:var(--text-2); border:1px solid var(--line); font-family:var(--mono);
+}
+
 </style>
 </head>
 <body>
@@ -1333,21 +1351,25 @@ function pageDetail(p){
   const idx = PROJECTS.indexOf(p);
   const prev = PROJECTS[(idx - 1 + PROJECTS.length) % PROJECTS.length];
   const next = PROJECTS[(idx + 1) % PROJECTS.length];
-  const cats = p.categories.map(k => (CATEGORIES.find(c => c.key === k) || {}).label).filter(Boolean);
+
+  const targetPlatform = p.categories[0] === 'mobile' ? 'Android / iOS (Flutter / PWA)' :
+                         p.categories[0] === 'ai' ? 'Python / PyTorch / Edge D1' :
+                         p.categories[0] === 'system' ? 'Linux Server / Asterisk PBX' :
+                         'Web Application / Laravel / MySQL';
 
   return `
   <div class="wrap">
     <nav class="crumbs" aria-label="مسیر صفحه">
       <a href="#/">خانه</a><span class="sep">/</span>
       <a href="#/projects">پروژه‌ها</a><span class="sep">/</span>
-      <span>${esc(p.name)}</span>
+      <span>${esc(p.nameFa)}</span>
     </nav>
   </div>
 
   <header class="wrap detail-head acc-${p.accent}">
     <span class="eyebrow"><span class="dot" aria-hidden="true"></span>${esc(p.categoryLabel)}</span>
-    <h1>${esc(p.name)}</h1>
-    <span class="en">${esc(p.nameFa)}</span>
+    <h1>${esc(p.nameFa)}</h1>
+    <span class="en">${esc(p.name)}</span>
     <p class="detail-lead">${esc(p.tagline)}</p>
     <div class="detail-meta">
       <ul class="badges">${p.tech.map(t => `<li class="badge">${esc(t)}</li>`).join('')}</ul>
@@ -1365,12 +1387,12 @@ function pageDetail(p){
     <div class="detail-grid acc-${p.accent}">
       <div>
         <section class="block">
-          <div class="block-h"><span class="n">01</span><h2>نمای کلی و هدف پروژه</h2></div>
-          <p style="font-size:16px;line-height:1.9;color:var(--text)">${esc(p.overview)}</p>
+          <div class="block-h"><span class="n">01</span><h2>هدف و مسئلهٔ پروژه</h2></div>
+          <p style="font-size:16px;line-height:1.95;color:var(--text)">${esc(p.overview)}</p>
         </section>
 
         <section class="block">
-          <div class="block-h"><span class="n">02</span><h2>قابلیت‌ها و امکانات کلیدی</h2></div>
+          <div class="block-h"><span class="n">02</span><h2>قابلیت‌ها و امکانات پیاده‌شده</h2></div>
           <div class="feat-grid">
             ${p.features.map((f,i) => `
               <div class="feat-item">
@@ -1381,57 +1403,34 @@ function pageDetail(p){
         </section>
 
         <section class="block">
-          <div class="block-h"><span class="n">03</span><h2>پشتهٔ فناوری و ابزارها</h2></div>
-          <dl class="stack-table">
-            <div class="stack-row">
-              <dt>دسته‌بندی اصلی</dt>
-              <dd><ul class="badges">${cats.map(c => `<li class="badge">${esc(c)}</li>`).join('')}</ul></dd>
-            </div>
-            <div class="stack-row">
-              <dt>تکنولوژی‌های به‌کاررفته</dt>
-              <dd><ul class="badges">${p.tech.map(t => `<li class="badge">${esc(t)}</li>`).join('')}</ul></dd>
-            </div>
-          </dl>
-        </section>
-
-        <section class="block">
-          <div class="block-h"><span class="n">04</span><h2>پیاده‌سازی فنی و تصمیمات معماری</h2></div>
+          <div class="block-h"><span class="n">03</span><h2>نکات فنی و تصمیمات معماری</h2></div>
           <div class="impl">
             ${p.implementation.map((t,i) => `
               <div class="impl-item">
                 <span class="num">${fa(String(i+1).padStart(2,'0'))}</span>
-                <p style="font-size:15px;line-height:1.85">${esc(t)}</p>
+                <p style="font-size:15px;line-height:1.9">${esc(t)}</p>
               </div>`).join('')}
           </div>
         </section>
 
-        ${p.images.gallery && p.images.gallery.length > 0 ? `
         <section class="block">
-          <div class="block-h"><span class="n">05</span><h2>تصاویر بیشتر پروژه</h2></div>
-          <div class="gallery">
-            ${p.images.gallery.map((g,i) => `
-              <figure class="gal-item">
-                ${media(SITE.imgBase + p.slug + '/' + g.file,
-                        g.label + ' — ' + p.name, '16/10', p.mono, g.label, 'no-border')}
-                <figcaption class="gal-cap"><span class="idx">${fa(String(i+1).padStart(2,'0'))}</span>${esc(g.label)}</figcaption>
-              </figure>`).join('')}
-          </div>
-        </section>` : ''}
-
-        <section class="block">
-          <div class="block-h"><span class="n">${p.images.gallery && p.images.gallery.length > 0 ? '06' : '05'}</span><h2>پیوندها و دسترسی سورس‌کد</h2></div>
-          <div class="links">
-            <a class="link-row" href="${esc(p.repo)}" target="_blank" rel="noopener noreferrer">
-              ${ghIco}
-              <span><span class="lbl">مخزن گیت‌هاب</span><br><span class="sub">${esc(p.repo.replace('https://',''))}</span></span>
-              <span class="arrow">${arrL}</span>
+          <div class="block-h"><span class="n">04</span><h2>وضعیت دسترسی و سورس‌کد</h2></div>
+          <div class="private-repo-card">
+            <div class="priv-header">
+              <span class="priv-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </span>
+              <strong>مخزن اختصاصی و محرمانه (Private Repository)</strong>
+            </div>
+            <p style="margin:14px 0 20px;font-size:14.5px;line-height:1.95;color:var(--text-2)">
+              سورس‌کد و مستندات این پروژه به دلیل رعایت حقوق مالکیت کارفرما، اطلاعات کاربران یا محرمانگی تجاری در گیت‌هاب به صورت اختصاصی (Private) نگهداری می‌شوند. در صورت نیاز به بررسی فنی عمیق‌تر، ارزیابی بخش‌هایی از کد یا گفت‌وگو درباره جزئیات پیاده‌سازی، می‌توانید مستقیماً در ارتباط باشید.
+            </p>
+            <a class="btn btn-primary" href="#/contact">
+              درخواست گفت‌وگو و بررسی فنی ${arrL}
             </a>
-            ${p.demo ? `
-              <a class="link-row" href="${esc(p.demo)}" target="_blank" rel="noopener noreferrer">
-                ${extIco}
-                <span><span class="lbl">نسخهٔ نمایشی آنلاین</span><br><span class="sub">${esc(String(p.demo).replace('https://',''))}</span></span>
-                <span class="arrow">${arrL}</span>
-              </a>` : ''}
           </div>
         </section>
       </div>
@@ -1440,30 +1439,32 @@ function pageDetail(p){
         <div class="aside-card">
           <h3>مشخصات پروژه</h3>
           <dl class="aside-list">
-            <div><dt>شناسه</dt><dd class="mono">${fa(p.num)}</dd></div>
-            <div><dt>عنوان فارسی</dt><dd>${esc(p.nameFa)}</dd></div>
+            <div><dt>عنوان پروژه</dt><dd>${esc(p.nameFa)}</dd></div>
+            <div><dt>نام لاتین</dt><dd class="mono">${esc(p.name)}</dd></div>
             <div><dt>حوزهٔ تخصصی</dt><dd>${esc(p.categoryLabel)}</dd></div>
-            <div><dt>تعداد تکنولوژی</dt><dd class="mono">${fa(p.tech.length)}</dd></div>
-            <div><dt>وضعیت مخزن</dt><dd>${esc(p.repo.includes('github') ? 'گیت‌هاب' : 'خصوصی')}</dd></div>
+            <div><dt>پلتفرم هدف</dt><dd style="font-size:12.5px">${esc(targetPlatform)}</dd></div>
+            <div><dt>وضعیت سورس</dt><dd><span class="lock-tag">Private</span></dd></div>
           </dl>
-          <div style="margin-top:20px">
-            <a class="btn btn-primary" href="${esc(p.repo)}" target="_blank" rel="noopener noreferrer" style="width:100%;justify-content:center;gap:8px">
-              ${ghIco} مشاهده سورس پروژه
+          <div style="margin-top:22px; display:flex; flex-direction:column; gap:10px">
+            <a class="btn btn-primary" href="#/contact" style="width:100%;justify-content:center;gap:8px">
+              گفت‌وگو دربارهٔ این پروژه ${arrL}
+            </a>
+            <a class="btn btn-ghost" href="#/projects" style="width:100%;justify-content:center">
+              ${arrR} بازگشت به پروژه‌ها
             </a>
           </div>
         </div>
-        <a class="btn btn-ghost" href="#/projects" style="width:100%;margin-top:16px">${arrR} بازگشت به فهرست پروژه‌ها</a>
       </aside>
     </div>
 
     <nav class="prevnext" aria-label="پیمایش پروژه‌ها">
       <a class="pn" href="#/projects/${prev.slug}">
         <span class="dir">${arrR} پروژهٔ قبلی</span>
-        <span class="nm">${esc(prev.name)} (${esc(prev.nameFa)})</span>
+        <span class="nm">${esc(prev.nameFa)} (${esc(prev.name)})</span>
       </a>
       <a class="pn next" href="#/projects/${next.slug}">
         <span class="dir">پروژهٔ بعدی ${arrL}</span>
-        <span class="nm">${esc(next.name)} (${esc(next.nameFa)})</span>
+        <span class="nm">${esc(next.nameFa)} (${esc(next.name)})</span>
       </a>
     </nav>
   </div>
