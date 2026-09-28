@@ -291,13 +291,22 @@ ul{margin:0; padding:0; list-style:none}
   padding-bottom:4px;
 }
 .filter{
-  padding:8px 15px; border-radius:999px; font-size:14px; font-weight:500;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:7px 15px; border-radius:999px; font-size:13.5px; font-weight:500;
   border:1px solid var(--line); background:var(--surface); color:var(--text-2);
-  transition:all .18s var(--ease);
+  transition:all .18s var(--ease); cursor:pointer;
 }
 .filter:hover{border-color:var(--accent-line); color:var(--accent-text)}
 .filter[aria-pressed="true"]{background:var(--text); border-color:var(--text); color:var(--bg); font-weight:600}
-.filter .n{font-family:var(--mono); font-size:11.5px; opacity:.65; margin-inline-start:5px; direction:ltr}
+.filter .n{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:22px; height:20px; padding:0 6px; border-radius:999px;
+  font-family:var(--font); font-size:11px; font-weight:600;
+  background:var(--surface-2); color:var(--text-2); border:1px solid var(--line);
+}
+.filter[aria-pressed="true"] .n{
+  background:rgba(255,255,255,.2); color:var(--bg); border-color:rgba(255,255,255,.3);
+}
 
 /* ============================================================
    Project cards
@@ -317,8 +326,10 @@ ul{margin:0; padding:0; list-style:none}
   background:var(--a-soft); color:var(--a-text);
 }
 .card-num{margin-inline-start:auto; font-family:var(--mono); font-size:12px; color:var(--text-3); direction:ltr}
-.card h3{font-size:19px; font-weight:700; margin-bottom:8px}
-.card-name-fa{font-size:12.5px; color:var(--text-3); font-weight:400; margin-bottom:9px}
+.card h3{font-size:18px; font-weight:700; margin-bottom:10px; display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:6px}
+.card h3 a{color:var(--text); transition:color .18s var(--ease)}
+.card h3 a:hover{color:var(--a)}
+.card-en{font-size:13px; font-weight:500; color:var(--text-3); font-family:var(--mono); direction:ltr}
 .card-tag{font-size:14.5px; color:var(--text-2); line-height:1.85; margin-bottom:16px}
 .feat-list{display:flex; flex-direction:column; gap:6px; margin-bottom:18px}
 .feat-list li{font-size:13.5px; color:var(--text-2); display:flex; gap:9px; align-items:flex-start; line-height:1.7}
@@ -722,7 +733,7 @@ const PROJECTS = [
     repo: 'https://github.com/6B61737261/ghestam', demo: null
   },
   {
-    slug: 'ddpgfinal', num: '02', name: 'DDPGFINAL', nameFa: 'سامانه بهینه‌سازی بازار برق با یادگیری تقویتی',
+    slug: 'ddpgfinal', num: '02', name: 'DDPGFINAL', nameFa: 'دی‌دی‌پی‌جی (بازار برق)',
     accent: 'indigo', mono: 'RL', featured: true,
     categories: ['ai', 'engineering'], categoryLabel: 'هوش مصنوعی / یادگیری ماشین',
     tagline: 'استراتژی بهینهٔ قیمت‌گذاری نیروگاه‌ها در بازار برق با الگوریتم MADDPG، شبکه گراف عصبی (GCN) و هم‌شبیه‌سازی با MATPOWER.',
@@ -747,7 +758,7 @@ const PROJECTS = [
     repo: 'https://github.com/6B61737261/DDPGFINAL', demo: null
   },
   {
-    slug: 'eghamatgah', num: '03', name: 'Eghamatgah', nameFa: 'سامانه رزرواسیون اقامتگاه و هتل',
+    slug: 'eghamatgah', num: '03', name: 'Eghamatgah', nameFa: 'سامانه اقامتگاه',
     accent: 'emerald', mono: 'EG', featured: true,
     categories: ['web'], categoryLabel: 'اپلیکیشن وب',
     tagline: 'پلتفرم فول‌استک اجاره و رزرو اقامتگاه‌های گردشگری با لاراول، تقویم رزرو هوشمند و ورود OAuth.',
@@ -772,7 +783,7 @@ const PROJECTS = [
     repo: 'https://github.com/6B61737261/eghamatgah', demo: null
   },
   {
-    slug: 'issabel-installer', num: '04', name: 'Issabel Core Installer', nameFa: 'پکیج‌منیجر و اتوماسیون ماژول‌های ویپ و استریسک',
+    slug: 'issabel-installer', num: '04', name: 'Issabel Core Installer', nameFa: 'نصاب هسته ایزابل',
     accent: 'slate', mono: 'VO', featured: true,
     categories: ['infrastructure', 'automation'], categoryLabel: 'زیرساخت / لینوکس',
     tagline: 'فریم‌ورک و نصاب خودکار ماژول‌های اختصاصی مرکز تلفن Issabel PBX با پشتیبانی از RPM، دایل‌پلن و AGI.',
@@ -797,7 +808,7 @@ const PROJECTS = [
     repo: 'https://github.com/6B61737261/Issabel_Installer', demo: null
   },
   {
-    slug: 'filereader', num: '05', name: 'Secure PDF Viewer', nameFa: 'پورتال ابری توزیع و استریم امن اسناد',
+    slug: 'filereader', num: '05', name: 'Secure PDF Viewer', nameFa: 'نمایشگر امن اسناد',
     accent: 'indigo', mono: 'DR', featured: true,
     categories: ['web', 'infrastructure'], categoryLabel: 'وب و امنیت ابری',
     tagline: 'سامانهٔ سازمانی توزیع ایمن فایل‌های PDF با موتور استریم PDF.js، واترمارک پویا و قفل سخت‌افزاری دستگاه.',
@@ -822,7 +833,7 @@ const PROJECTS = [
     repo: 'https://github.com/6B61737261/filereader', demo: null
   },
   {
-    slug: 'ketabino', num: '06', name: 'Ketabino AI Engine', nameFa: 'موتور هوش مصنوعی تحلیل و نشر خودکار کتاب',
+    slug: 'ketabino', num: '06', name: 'Ketabino AI Engine', nameFa: 'موتور کتابینو',
     accent: 'indigo', mono: 'KB', featured: true,
     categories: ['ai', 'automation'], categoryLabel: 'هوش مصنوعی و اتوماسیون',
     tagline: 'خط خودکار پردازش اسناد و نشر محتوا با مدل Gemini LLM، پایتون PyMuPDF و دیتابیس لبه Cloudflare D1.',
@@ -847,7 +858,7 @@ const PROJECTS = [
     repo: 'https://github.com/6B61737261/ketabino', demo: null
   },
   {
-    slug: 'bb84', num: '07', name: 'BB84 Quantum Key Exchange', nameFa: 'شبیه‌ساز پروتکل رمزنگاری کوانتومی BB84',
+    slug: 'bb84', num: '07', name: 'BB84 Quantum Key Exchange', nameFa: 'رمزنگاری کوانتومی BB84',
     accent: 'indigo', mono: 'QK', featured: false,
     categories: ['engineering', 'ai'], categoryLabel: 'امنیت و علوم محاسباتی',
     tagline: 'شبیه‌سازی تصویری پروتکل توزیع کلید کوانتومی، کانال فوتونی، تشخیص استراق سمع (Eve) و آنالیز خطای QBER.',
@@ -872,7 +883,7 @@ const PROJECTS = [
     repo: 'https://github.com/6B61737261/BB84', demo: null
   },
   {
-    slug: 'mehrad-co', num: '08', name: 'Hamgaman Sanat Mehrad', nameFa: 'سامانه شرکتی همگامان صنعت با سپر هانی‌پات',
+    slug: 'mehrad-co', num: '08', name: 'Hamgaman Sanat Mehrad', nameFa: 'همگامان صنعت مهرداد',
     accent: 'emerald', mono: 'HS', featured: false,
     categories: ['web', 'infrastructure'], categoryLabel: 'وب و دفاع سایبری',
     tagline: 'وب‌سایت صنعتی و پورتال کاتالوگ قطعات با معماری دفاعی Honeypot برای مسدودسازی ربات‌ها و لاگ فعالیت‌ها.',
@@ -897,7 +908,7 @@ const PROJECTS = [
     repo: 'https://github.com/6B61737261/mehrad-co', demo: null
   },
   {
-    slug: 'aicommunity', num: '09', name: 'AI Community', nameFa: 'انجمن تخصصی توسعه‌دهندگان هوش مصنوعی',
+    slug: 'aicommunity', num: '09', name: 'AI Community', nameFa: 'انجمن هوش مصنوعی',
     accent: 'indigo', mono: 'AI', featured: false,
     categories: ['web', 'ai'], categoryLabel: 'وب و جامعه توسعه‌دهندگان',
     tagline: 'انجمن تخصصی تبادل نظر، پرسش و پاسخ و اشتراک‌گذاری پروژه‌ها و کدهای هوش مصنوعی با لاراول.',
@@ -922,7 +933,7 @@ const PROJECTS = [
     repo: 'https://github.com/6B61737261/AICommunity', demo: null
   },
   {
-    slug: 'khaled', num: '10', name: 'Naqib Gold Gallery', nameFa: 'گالری طلا و جواهرات لوکس نقیب',
+    slug: 'khaled', num: '10', name: 'Naqib Gold Gallery', nameFa: 'گالری طلای نقیب',
     accent: 'emerald', mono: 'NG', featured: false,
     categories: ['web'], categoryLabel: 'فروشگاه و برندینگ لوکس',
     tagline: 'پلتفرم فروشگاهی و ویترین اختصاصی طلا و جواهرات دست‌ساز با تم لوکس مشکی و طلایی و نرخ لحظه‌ای طلا.',
@@ -947,7 +958,7 @@ const PROJECTS = [
     repo: 'https://github.com/6B61737261/khaled', demo: null
   },
   {
-    slug: 'weather-web-app', num: '11', name: 'SkyPulse Weather PWA', nameFa: 'وب‌اپ هواشناسی پیش‌رونده با پوش‌نوتیفیکیشن',
+    slug: 'weather-web-app', num: '11', name: 'SkyPulse Weather PWA', nameFa: 'هواشناسی اسکای‌پالس',
     accent: 'indigo', mono: 'SP', featured: false,
     categories: ['web', 'mobile', 'automation'], categoryLabel: 'وب‌اپلیکیشن PWA',
     tagline: 'سامانه پیش‌بینی پیش‌رونده وضعیت جوی (PWA) با React، وب‌پوش نوتیفیکیشن زنده و کران‌جاب‌های هشدارهای شدید.',
@@ -972,7 +983,7 @@ const PROJECTS = [
     repo: 'https://github.com/6B61737261/Weather-web-app', demo: null
   },
   {
-    slug: 'ocr', num: '12', name: 'Smart Vision OCR', nameFa: 'سامانه استخراج بلادرنگ متن و لینک با وب‌کم',
+    slug: 'ocr', num: '12', name: 'Smart Vision OCR', nameFa: 'اسمارت ویژن OCR',
     accent: 'slate', mono: 'OC', featured: false,
     categories: ['ai', 'engineering'], categoryLabel: 'بینایی ماشین و هوش مصنوعی',
     tagline: 'سیستم بینایی ماشین و نویسه‌خوان نوری بلادرنگ با OpenCV، پردازش تصویر و موتور Tesseract OCR.',
@@ -1039,25 +1050,26 @@ const extIco = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strok
 function projectCard(p){
   return `
   <article class="card acc-${p.accent} reveal" data-cats="${p.categories.join(' ')}">
-    <a href="#/projects/${p.slug}" aria-label="مشاهدهٔ پروژهٔ ${esc(p.name)}">
+    <a class="card-media-link" href="#/projects/${p.slug}" aria-label="مشاهدهٔ پروژهٔ ${esc(p.nameFa)} (${esc(p.name)})">
       ${media(SITE.imgBase + p.slug + '/' + p.images.cover,
               'پیش‌نمایش پروژهٔ ' + p.name, '16/9', p.mono, p.nameFa)}
-      <span class="cover-glass"><span class="cover-title">${esc(p.nameFa)}</span><span class="cover-type">${esc(p.categoryLabel)}</span></span>
     </a>
     <div class="card-body">
       <div class="card-top">
         <span class="cat-chip">${esc(p.categoryLabel)}</span>
         <span class="card-num">${fa(p.num)}</span>
       </div>
-      <h3><a href="#/projects/${p.slug}">${esc(p.name)}</a></h3>
-      <p class="card-name-fa">${esc(p.nameFa)}</p>
+      <h3>
+        <a href="#/projects/${p.slug}">${esc(p.nameFa)}</a>
+        <span class="card-en">${esc(p.name)}</span>
+      </h3>
       <p class="card-tag">${esc(p.tagline)}</p>
       <ul class="feat-list">
         ${p.cardFeatures.map(f => `<li>${esc(f)}</li>`).join('')}
       </ul>
       <div class="card-foot">
         <ul class="badges">${p.tech.slice(0,5).map(t => `<li class="badge">${esc(t)}</li>`).join('')}</ul>
-        <a class="view" href="#/projects/${p.slug}">مشاهدهٔ پروژه ${arrL}</a>
+        <a class="view" href="#/projects/${p.slug}">بررسی کامل پروژه ${arrL}</a>
       </div>
     </div>
   </article>`;
@@ -1252,7 +1264,7 @@ function pageProjects(){
       <div class="filters" role="group" aria-label="فیلتر پروژه‌ها بر اساس دسته">
         ${CATEGORIES.map(c => `
           <button class="filter" type="button" data-filter="${c.key}" aria-pressed="${c.key === 'all' ? 'true' : 'false'}">
-            ${esc(c.label)}<span class="n">${fa(c.key === 'all' ? PROJECTS.length : (counts[c.key] || 0))}</span>
+            <span>${esc(c.label)}</span><span class="n">${fa(c.key === 'all' ? PROJECTS.length : (counts[c.key] || 0))}</span>
           </button>`).join('')}
       </div>
       <p id="filterStatus" class="mono" style="color:var(--text-3);font-size:12.5px;margin-bottom:20px" role="status" aria-live="polite"></p>
